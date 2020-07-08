@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import TeamWrapper from './Components/TeamWrapper';
 
 function App() {
+  const [teamMembers, setTeamMembers] = useState([
+    {name: 'Mitchell', email: 'mitchell@lambdaschool.com', role: 'Backend Engineer'},
+    {name: 'Darrian', email: 'darrian@lambdaschool.com', role: 'Backend Engineer'}
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-white rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-4 flex justify-center p-8">
+      <TeamWrapper />
     </div>
   );
 }
