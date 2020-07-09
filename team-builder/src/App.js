@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import TeamWrapper from './Components/TeamWrapper';
+import AddTeamMemberForm from './Components/AddTeamMemberForm';
 
 function App() {
   const [teamMembers, setTeamMembers] = useState([
@@ -10,8 +11,9 @@ function App() {
   ]);
 
   return (
-    <div className="App bg-white rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-4 flex justify-center p-8">
-      <TeamWrapper />
+    <div className="App bg-white rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-4 flex justify-center items-center flex-col p-8">
+      <AddTeamMemberForm />
+      <TeamWrapper teamMembers={teamMembers} />
     </div>
   );
 }
