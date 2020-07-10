@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AddTeamMemberForm = props => {
     const [newTeamMember, setNewTeamMember] = useState({name: '', email: '', role: 'Backend Engineer'});
@@ -9,13 +9,22 @@ const AddTeamMemberForm = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        props.addTeamMember(newTeamMember);
+        if(props.isEditing) {
+            props.editTeamMember({...newTeamMember, index: props.memberToEdit.index});
+        } else {
+            props.addTeamMember(newTeamMember);
+        }
+
         setNewTeamMember({
             name: '',
             email: '',
             role: 'Backend Engineer'
         });
     };
+
+    useEffect( () => {
+        setNewTeamMember({name: props.memberToEdit.name, email: props.memberToEdit.email, role: props.memberToEdit.role});
+    }, [props.memberToEdit]);
 
     return (
         <div className="w-full max-w-xs">
